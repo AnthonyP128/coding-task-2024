@@ -8,41 +8,42 @@ import { Contact } from 'src/app/models/contact.model';
   templateUrl: './contact-edit-dialog.component.html',
   styleUrls: ['./contact-edit-dialog.component.css']
 })
-
 export class ContactEditDialogComponent {
-  
+
+  contactForm: FormGroup;
+
   constructor(
-    public dialogRef: MatDialogRef<{contact: Contact}>,
-    @Inject(MAT_DIALOG_DATA) public data: {
-      contact : Contact | null
-    }
-  ){
+    public dialogRef: MatDialogRef<ContactEditDialogComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: { contact: Contact | null }
+  ) {
+    this.contactForm = new FormGroup({
+      firstName: new FormControl(''),
+      lastName: new FormControl(''),
+      phoneNumber: new FormControl(''),
+      email: new FormControl('')
+    });
 
-  }
-
-  contactForm: FormGroup = new FormGroup({
-    firstName : new FormControl(),
-    lastName : new FormControl(),
-    phoneNumber : new FormControl(),
-    email : new FormControl()
-  })
-
-  ngOnInit(){
-    if(this.data.contact){
-      this.contactForm.patchValue(this.data.contact)
-      console.log(this.contactForm.value)
+    if (this.data.contact) {
+      this.contactForm.patchValue(this.data.contact);
     }
   }
 
-  onSaveClick() : void {
+  ngOnInit() {
+    if (this.data.contact) {
+      this.contactForm.patchValue(this.data.contact);
+    } else {
+      this.contactForm.reset();
+    }
+  }  
+
+  onSaveClick(): void {
     this.dialogRef.close({
-      id : this.data.contact?.id || -1,
+      id: this.data.contact?.id || -1,
       ...this.contactForm.value
-    })
+    });
   }
 
-  onCancelClick() : void {
+  onCancelClick(): void {
     this.dialogRef.close();
   }
-
 }

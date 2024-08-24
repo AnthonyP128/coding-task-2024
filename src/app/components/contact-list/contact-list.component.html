@@ -3,6 +3,7 @@
 </div>
 
 <div *ngIf="!loading">
+  <button type="button" class="btn-primary" (click)="addContact()">Add new contact</button>
   <div *ngFor="let contact of contactList$ | async" class="contact-list-item">
     <h3>{{ contact.firstName }} {{ contact.lastName }}</h3>
     <div class="contact-actions">

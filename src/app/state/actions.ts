@@ -16,9 +16,9 @@ export const contactSelected = createAction(
 );
 
 export const editContactClicked = createAction(
-    '[CONTACT DETAIL] Edit Contact Button Clicked',
-    props<{contact : Contact}>()
-);
+    '[CONTACT LIST] Edit or Add Contact Button Clicked',
+    props<{ contact: Contact | null }>() // Allow null here
+  );
 
 export const editContactConfrimed = createAction(
     '[CONTACT MODAL] Edit Contact Confirmed (Save Clicked)',
@@ -33,4 +33,14 @@ export const contactSavedSuccess = createAction(
     '[BACKEND SERVICE] Contact Saved Successfully',
     props<{contact: Contact}>()
 );
+
+export const addContactClicked = createAction(
+    '[CONTACT LIST] Add Contact Button Clicked'
+  );
+  
+export const contactAdded = createAction(
+    '[CONTACT MODAL] Contact Added',
+    props<{ contact: Contact }>()
+);
+  
 

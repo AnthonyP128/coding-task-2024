@@ -70,16 +70,10 @@ export class ContactService {
 
   //#endregion
 
-  editContactDialog$(contact: Contact) : Observable<Contact> {
-
+  editContactDialog$(contact: Contact | null): Observable<Contact | null> {
     const dialogRef = this.dialog.open(ContactEditDialogComponent, {
-      data: {
-        contact
-      }
-    })
-
+      data: { contact }
+    });
     return dialogRef.afterClosed();
-
   }
-
 }

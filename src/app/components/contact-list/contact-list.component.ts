@@ -11,7 +11,8 @@ import * as actions from '../../state/actions';
   styleUrls: ['./contact-list.component.css']
 })
 export class ContactListComponent implements OnInit {
-  contactList$: Observable<Contact[]>;
+
+  contactList$: Observable<Contact[]> = this.store.select(selectContactList);
   activeContact$: Observable<Contact | undefined>;
   loading: boolean = true;
 
@@ -19,10 +20,8 @@ export class ContactListComponent implements OnInit {
     this.contactList$ = this.store.select(selectContactList);
     this.activeContact$ = this.store.select(selectActiveContact);
   }
-  
+
   ngOnInit() {
-    // Set loading to true initially
-    this.loading = true;
     this.contactList$.subscribe(contacts => {
       this.loading = contacts.length === 0;
     });
@@ -34,5 +33,9 @@ export class ContactListComponent implements OnInit {
 
   editContactClicked(contact: Contact) {
     this.store.dispatch(actions.editContactClicked({ contact }));
+  }
+
+  addContact() {
+    this.store.dispatch(actions.editContactClicked({ contact: null })); // Indicate a new contact
   }
 }
