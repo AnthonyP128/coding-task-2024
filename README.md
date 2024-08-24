@@ -26,7 +26,11 @@ In our main code base, you would expect to find this architecture replicated wit
 
 # Answers
 
-1. //Optionally provide any notes relating to question 1 here.
-2. //Optionally provide any notes relating to question 2 here.
+1. === Optionally provide any notes relating to question 1 here. ===
+- Firstly i created a custome angular directive to conditionaly manage and display a spinner or content based on the loading state. I managed it this way to make the component reusable which can be used for many pages in the future
+- I used the *ngIf directive in the component to show either the spinner or contact list depending if data has loaded or not
+- I then did basic and simple styling to make it more presentable
+2. === Optionally provide any notes relating to question 2 here. ===
+
 3. //Provide your answer to question 3 here.
 4. //Provide your link or location of your file within the repo here.

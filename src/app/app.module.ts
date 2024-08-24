@@ -14,6 +14,8 @@ import { EffectsModule } from '@ngrx/effects';
 
 import { MatDialogModule } from '@angular/material/dialog';
 import { ReactiveFormsModule } from '@angular/forms';
+import { SpinnerDirective } from './directive/spinner.directive';
+
 
 @NgModule({
   declarations: [
@@ -21,7 +23,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     ContactListComponent,
     ContactDetailComponent,
     ContactEditDialogComponent,
-    PickRoleDialogComponent
+    PickRoleDialogComponent,
+    SpinnerDirective
   ],
   imports: [
     BrowserModule,
